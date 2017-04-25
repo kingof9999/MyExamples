@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts 
+Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="listDatChoForm" type="form.ListDatChoForm"></form-bean>
+		<form-bean name="dangNhapForm" type="form.DangNhapForm"></form-bean>
+		<form-bean name="listDetailCustomer" type="form.ListDetailCustomer"/>
+		<form-bean name="listThongTinXeForm" type="form.ListThongTinXeForm"/>
+		<form-bean name="datChoForm" type="form.DatChoForm"/>
+		<form-bean name="thongTinTaiKhoanForm" type="form.ThongTinTaiKhoanForm" />
+		<form-bean name="listTaiKhoanForm" type="form.ListTaiKhoanForm"/>
+		<form-bean name="listTiepNhanDatChoForm" type="form.ListTiepNhanDatChoForm" />
+		<form-bean name="dinhViForm" type="form.DinhViForm" />
+		<form-bean name="listTaiXeForm" type="form.ListTaiXeForm" />
+		<form-bean name="listXeForm" type="form.ListXeForm" />
+		<form-bean name="listChuyenDiForm" type="form.ListChuyenDiForm" />
+		<form-bean name="thongTinChuyenDiForm" type="form.ThongTinChuyenDiForm" />
+		<form-bean name="thongTinXeForm" type="form.ThongTinXeForm" />
+		<form-bean name="listLoaiXeForm" type="form.ListLoaiXeForm" />
+		<form-bean name="thongTinLoaiXeForm" type="form.ThongTinLoaiXeForm" />
+		<form-bean name="listThongTinTuyenDuongForm" type="form.ListThongTinTuyenDuongForm" />
+		<form-bean name="thongTinTuyenDuongForm" type="form.ThongTinTuyenDuongForm" />
+		<form-bean name="thongTinDinhViXeForm" type="form.ThongTinDinhViXeForm" />
+	</form-beans>
+	<action-mappings>
+		<action input="/index.jsp" name="dangNhapForm"
+			path="/f-dang-nhap" scope="request" type="action.CheckFirstDangNhapAction">
+			<forward name="dangNhap" path="/customer/dangNhap.jsp" />
+			<forward name="admin" path="/admin/index.jsp" />
+			<forward name="user" path="/listCus.se16" />
+			<forward name="taixe" path="/trang-chu-tx.se16" />
+			<forward name="thatBai" path="/customer/dangNhap.jsp" />
+		</action>
+		<action input="/index.jsp" name="dangNhapForm"
+			path="/dang-nhap" scope="request" type="action.CheckDangNhapAction">
+			<forward name="admin" path="/admin/index.jsp" />
+			<forward name="user" path="/listCus.se16" />
+			<forward name="taixe" path="/trang-chu-tx.se16" />
+			<forward name="thatBai" path="/customer/dangNhap.jsp" />
+		</action>
+		<action input="/index.jsp" path="/listDC" name="listDatChoForm" scope="request" type="action.ShowListDatChoAction">
+			<forward name="listDatCho" path="/admin/quanLyDatCho.jsp"/>
+		</action>
+		<action input="/dangNhap.jsp" name="listDetailCustomer"
+			path="/listCus" scope="request" type="action.ShowDetailListCustomer">
+			<forward name="listCus" path="/customer/detail.jsp" />
+		</action>
+		<action path="/dang-xuat" type="action.CheckDangXuatAction">
+			<forward name="dangXuat" path="/trang-chu.se16"/>
+		</action>
+		<action path="/trang-chu" name="listThongTinXeForm" scope="request" type="action.ShowListXeAction">
+			<forward name="home" path="/customer/home.jsp"/>
+		</action>
+		<action path="/datCho" name="datChoForm" scope="request" type="action.DatChoAction">
+			<forward name="thanhCongCD" path="/datChoTC.se16"/>
+			<forward name="errorCD" path="/trang-chu.se16"/>
+		</action>
+		<action path="/datChoTC" name="datChoForm" scope="request" type="action.DatChoThanhCongAction">
+			<forward name="thanhCongCD" path="/customer/datChoThanhCong.jsp"/>
+		</action>
+		<action path="/huyCho" name="datChoForm" scope="request" type="action.HuyDatChoAction">
+			<forward name="huyThanhCong" path="/f-dang-nhap.se16" />
+			<forward name="huyLoi" path="/f-dang-nhap.se16" />
+		</action>
+		<action path="/viewDetailTK" name="thongTinTaiKhoanForm" scope="request" type="action.GetThongTinTaiKhoan">
+			<forward name="layThanhCong" path="/customer/detailCustomer.jsp"/>
+			<forward name="suaThanhCong" path="/customer/detailCustomer.jsp" />
+			<forward name="errorSua" path="/customer/detailCustomer.jsp"/>
+		</action>
+		<action path="/thayMK" name="thongTinTaiKhoanForm" scope="request" type="action.ThayDoiMatKhauAction">
+			<forward name="thayThanhCong" path="/customer/detailCustomer.jsp"/>
+			<forward name="thayThanhCong" path="/viewDetailTK.se16"/>
+			<forward name="loiThay" path="/viewDetailTK.se16"/>
+		</action>
+		<action path="/trang-chu-ad" name="listChuyenDiForm" scope="request" type="action.ShowListChuyenDiAction">
+			<forward name="home" path="/admin/home.jsp"/>
+		</action>
+		<action path="/trang-chu-tx" name="listThongTinXeForm" scope="request" type="action.ShowListXeAction">
+			<forward name="home" path="/taixe/home.jsp"></forward>
+		</action>
+		<action path="/chiTietTK" name="thongTinTaiKhoanForm" scope="request" type="action.GetThongTinTaiKhoan">
+			<forward name="layThanhCong" path="/admin/chiTietTaiKhoan.jsp"/>
+			<forward name="suaThanhCong" path="/listTK.se16" />
+		</action>
+		<action path="/resetPW" name="thongTinTaiKhoanForm" scope="request" type="action.ResetMauKhauAction">
+			<forward name="resetThanhCong" path="/listTK.se16" />
+		</action>
+		<action path="/chiTietDC" name="datChoForm" scope="request" type="action.GetThongTinDatChoAD">
+			<forward name="layThanhCong" path="/admin/chiTietDatCho.jsp"/>
+			<forward name="suaThanhCong" path="/listDC.se16" />
+		</action>
+		
+		
+		<!-- NhungNTH -->
+		<action input="/admin/index.jsp" path="/listTK" name="listTaiKhoanForm" scope="request" type="action.ShowListTaiKhoanAction">
+			<forward name="listTaiKhoan" path="/admin/quanLyTaiKhoan.jsp"/>
+		</action>
+		<action input="/admin/themTaiKhoan.jsp" name="thongTinTaiKhoanForm"
+			path="/themTK" scope="request" type="action.ThemTaiKhoanAction">
+			<forward name="themTK" path="/admin/themTaiKhoan.jsp" />
+			<forward name="themTKerror" path="/themTaiKhoan.jsp" />
+			<forward name="themTKxong" path="/listTK.se16"/>
+			<forward name="listTK" path="/listTK.se16"/>
+		</action>
+		
+		
+		<!-- TrangHTT -->
+		<action input="/taixe/index.jsp" path="/tn-datcho" name="listTiepNhanDatChoForm" scope="request" type="action.ShowListTNDatChoAction">
+			<forward name="listTNDC" path="/taixe/tiepNhanDC.jsp"/>
+		</action>
+		<action input="/index.jsp" path="/dinh-Vi" name="dinhViForm" scope="request" type="action.DinhViAction">
+			<forward name="dinhVi" path="/taixe/dinhVi.jsp"/>
+		</action>
+		
+		
+		<!-- DuyBLX -->
+		<action input = "/quanLyDatCho.jsp"  name = "datChoForm"
+			path="/xoaDC" scope="request" type="action.XoaDatChoAction">
+			<forward name="xoaDC" path="/listDC.se16" redirect="true"></forward>
+			<forward name="listDatCho" path = "/admin/quanLyDatCho.jsp"></forward>
+		</action>
+		<action input="/index.jsp" path="/listTX" name="listTaiXeForm" scope="request" type="action.ShowListTaiXeAction">
+			<forward name="listTaiXe" path="/admin/quanLyTaiXe.jsp"/>
+		</action>
+		<action input="/admin/suaTaiXe.jsp" name="thongTinTaiKhoanForm"
+			path="/suaTX" scope="request" type="action.SuaTaiXeAction">
+			<forward name="suaTX" path="/admin/suaTaiXe.jsp" />
+			<forward name="suaTXError" path="/admin/suaTaiXe.jsp" />
+			<forward name="suaTXxong" path="/listTX.se16"/>
+		</action>
+		<action input="/admin/themTaiXe.jsp" name="thongTinTaiKhoanForm"
+			path="/themTX" scope="request" type="action.ThemTaiXeAction" validate="true">
+			<forward name="themTX" path="/admin/themTaiXe.jsp" />
+			<forward name="themTXerror" path="/admin/themTaiXe.jsp" />
+			<forward name="themTXxong" path="/listTX.se16"/>
+		</action>
+		<action input="quanLyTaiXe.jsp" name="thongTinTaiKhoanForm"
+			path="/xoaTX" scope="request" type="action.XoaTaiXeAction">
+			<forward name="xoaTX" path="/listTX.se16" />
+			<forward name="listTaiXe" path="/listTX.se16"/>
+		</action>
+		
+		<!-- DatPV -->
+		<action input="/index.jsp" path="/ds-Xe" name="listThongTinXeForm" scope="request" type="action.ShowListXeAction">
+			<forward name="listXe" path="/admin/quanLyXe.jsp"/>
+		</action>
+		<action input="/index.jsp" name="listThongTinXeForm"
+			path="/xoaXe" scope="request" type="action.XoaXeAction">
+			<forward name="xoaXong" path="/ds-Xe.se16?linkAD=true" />
+		</action>
+		<action input="/index.jsp" name="thongTinXeForm"
+			path="/suaXe" scope="request" type="action.SuaXeAction">
+			<forward name="suaXe" path="/admin/suaXe.jsp" />
+			<forward name="suaXeerror" path="/admin/suaXe.jsp" />
+			<forward name="suaXexong" path="/ds-Xe.se16?linkAD=true" />
+		</action>
+		<action input="/admin/themxe.jsp" name="thongTinXeForm"
+			path="/themXe" scope="request" type="action.ThemXeAction" >
+			<forward name="themXe" path="/admin/themXe.jsp" />
+			<forward name="themXeerror" path="/admin/themXe.jsp" />
+			<forward name="themXexong" path="/ds-Xe.se16?linkAD=true" />
+		</action>
+		
+		<action input="/index.jsp" path="/qlchuyendi" name="listChuyenDiForm" scope="request" type="action.ShowListChuyenDiAction">
+			<forward name="listChuyenDi" path="/admin/quanLyChuyenDi.jsp"/>
+		</action>
+		<action input="/index.jsp" name="listChuyenDiForm"
+			path="/xoaChuyenDi" scope="request" type="action.XoaChuyenDiAction">
+			<forward name="ok" path="/qlchuyendi.se16?check=true" />
+		</action>
+		<action input="/index.jsp" name="thongTinChuyenDiForm"
+			path="/suaCD" scope="request" type="action.SuaChuyenDiAction">
+			<forward name="suaChuyenDi" path="/admin/suaChuyenDi.jsp" />
+			<forward name="suaChuyenDiLoi" path="/admin/suaChuyenDi.jsp" />
+			<forward name="suaChuyenDiXong" path="/qlchuyendi.se16?check=true" />
+		</action>
+		<action input="/admin/themchuyendi.jsp" name="thongTinChuyenDiForm"
+			path="/themCD" scope="request" type="action.ThemChuyenDiAction" validate="true">
+			<forward name="themChuyenDi" path="/admin/themChuyenDi.jsp" />
+			<forward name="themChuyenDierror" path="/admin/themChuyenDi.jsp" />
+			<forward name="themChuyenDiXong" path="/qlchuyendi.se16?check=true" />
+		</action>
+		<action input="/admin/quanLyXe.jsp" path="/loaiXe" name="listLoaiXeForm" scope="request" type="action.ShowListLoaiXeAction">
+			<forward name="listLoaiXe" path="/admin/quanLyLoaiXe.jsp"/>
+		</action>
+		<action input="/admin/quanLyLoaiXe.jsp" name="listLoaiXeForm"
+			path="/xoaLX" scope="request" type="action.XoaLoaiXeAction">
+			<forward name="xoaLoaiXeXong" path="/loaiXe.se16" />
+		</action>
+		<action input="/admin/quanLyLoaiXe.jsp" name="thongTinLoaiXeForm"
+			path="/themLoaiXe" scope="request" type="action.ThemLoaiXeAction" validate="true">
+			<forward name="themLoaiXeXong" path="/loaiXe.se16" />
+		</action>
+		<action input="/index.jsp" name="thongTinLoaiXeForm"
+			path="/suaLX" scope="request" type="action.SuaLoaiXeAction">
+			<forward name="suaLoaiXe" path="/admin/suaLoaiXe.jsp" />
+			<forward name="suaLoaiXeLoi" path="/admin/suaLoaiXe.jsp" />
+			<forward name="suaLoaiXeXong" path="/loaiXe.se16" />
+		</action>
+		
+		<action input="/index.jsp" path="/qlTuyenDuong" name="listThongTinTuyenDuongForm" scope="request" type="action.ShowListTuyenDuongAction">
+			<forward name="listTuyenDuong" path="/admin/quanLyTuyenDuong.jsp"/>
+		</action>
+		<action input="/admin/quanLyTuyenDuong.jsp" name="thongTinTuyenDuongForm"
+			path="/xoatd" scope="request" type="action.XoaTuyenDuongAction">
+			<forward name="xoaXong" path="/qlTuyenDuong.se16" />
+		</action>	
+		<action name="thongTinTuyenDuongForm"
+			path="/suaTuyenDuong" scope="request" type="action.SuaTuyenDuongAction">
+			<forward name="suaTuyenDuong" path="/admin/suaTuyenDuong.jsp" />
+			<forward name="suaTuyenDuongLoi" path="/admin/suaTuyenDuong.jsp" />
+			<forward name="suaTuyenDuongXong" path="/qlTuyenDuong.se16" />
+		</action>
+		<action input="/admin/themTuyenDuong.jsp" name="thongTinTuyenDuongForm"
+			path="/themTuyenDuong" scope="request" type="action.ThemTuyenDuongAction" validate="true">
+			<forward name="themTD" path="/admin/themTuyenDuong.jsp" />
+			<forward name="themTuyenDuongerror" path="/admin/themTuyenDuong.jsp" />
+			<forward name="themTuyenDuongXong" path="/qlTuyenDuong.se16" />
+		</action>
+		
+		<action input="/admin/quanLyXe.jsp" path="/dvXe" name="thongTinDinhViXeForm" scope="request" type="action.DinhViXeAction">
+			<forward name="thongTinXe" path="/customer/testDinhViXe.jsp"/>
+		</action>
+		
+		<!-- Chi tiết chuyến đi action -->
+		<action path="/xacnhantim" name="listTiepNhanDatChoForm" scope="request" type="action.ShowListKhachHangTheoChuyenDi">
+			<forward name="thanhCong" path="/taixe/chiTiet.jsp" />
+		</action>
+	</action-mappings>
+	<message-resources parameter="action.ApplicationResources"/>
+</struts-config>
