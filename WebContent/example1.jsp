@@ -22,5 +22,9 @@
 	    document.body.appendChild(x);
 	}
 	</script>
+	
+	<label>Input here:
+		<input type='text' name='whatever' id='theinput' value="abc" />
+	</label>
 </body>
 </html>
